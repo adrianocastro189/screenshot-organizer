@@ -28,6 +28,20 @@ Every contribution or subscription is deeply appreciated and also supports
 the [Stormwind Library project](https://github.com/adrianocastro189/stormwind-library),
 which is the framework used to build this addon.
 
+## How to use it
+
+### Requirements
+
+* [Node.js 20.0.0](https://nodejs.org/) or higher - although it may work 
+with older versions, it was developed and tested with v20, so it's not
+guaranteed to work with older versions.
+
+### Installation
+
+1. Unzip the application files to a folder of your choice
+1. Open a terminal and navigate to the folder where you unzipped the files
+1. Run `npm install` to install the dependencies
+
 ## What's on the roadmap for the next versions
 
 The best way to know what should be done next is to have feedback from 

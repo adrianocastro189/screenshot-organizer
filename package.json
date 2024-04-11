@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/adrianocastro189/screenshot-organizer/issues"
   },
-  "homepage": "https://github.com/adrianocastro189/screenshot-organizer#readme"
+  "homepage": "https://github.com/adrianocastro189/screenshot-organizer#readme",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
 }

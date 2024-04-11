@@ -53,3 +53,17 @@ users. If you have any suggestions or ideas, please let me know by
 * More **log messages** to help users understand what the application is 
 doing
 * More **detailed settings** for better customization
+
+## For developers
+
+If you want to contribute to this project, you can fork it and submit a
+pull request.
+
+### How to run the unit tests
+
+This project uses [Jest](https://jestjs.io/) for unit testing. To run the
+tests, use the following command:
+
+```bash
+npm test
+```

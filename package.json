@@ -1,0 +1,22 @@
+{
+  "name": "screenshot-organizer",
+  "version": "1.0.0",
+  "description": "An application to organize World of Warcraft screenshots based on their timestamps.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adrianocastro189/screenshot-organizer.git"
+  },
+  "author": "adrianocastro189",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/adrianocastro189/screenshot-organizer/issues"
+  },
+  "homepage": "https://github.com/adrianocastro189/screenshot-organizer#readme",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

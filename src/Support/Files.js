@@ -20,6 +20,17 @@ class Files {
     copy(source, destination) {
         this.fs.copyFileSync(source, destination);
     }
+
+    /**
+     * Deletes a file.
+     * 
+     * This is just a facade for fs.unlinkSync().
+     * 
+     * @param {string} file 
+     */
+    delete(file) {
+        this.fs.unlinkSync(file);
+    }
 }
 
 module.exports = Files;

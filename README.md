@@ -42,6 +42,22 @@ guaranteed to work with older versions.
 1. Open a terminal and navigate to the folder where you unzipped the files
 1. Run `npm install` to install the dependencies
 
+### Configuration
+
+The application has a configuration file that you need to copy and update
+with your settings. To do that, follow these steps:
+
+1. Copy the `config-example.json` file to a new file named `config.json`
+1. Open `config.json` with any text editor like Notepad
+1. Replace the `clients` array with a list of clients you want to organize
+   * The client path must be a folder containing the Screenshots folder,    
+     which means it will work if the World of Warcraft folder is not 
+     entirely matching Blizzard's default installation path
+1. Replace the `destinationFolder` path with the root folder where you want
+   the screenshots to be organized
+1. Feel free to leave the `syncMethod` with its default value, but if you
+   want your screenshots to be moved instead of copied, change it to `move`
+
 ## What's on the roadmap for the next versions
 
 The best way to know what should be done next is to have feedback from 

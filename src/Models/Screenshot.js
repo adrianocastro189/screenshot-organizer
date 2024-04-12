@@ -15,6 +15,8 @@ class Screenshot {
      */
     constructor(path) {
         this.path = path;
+
+        this.parseDate();
     }
 
     /**
@@ -27,6 +29,28 @@ class Screenshot {
         const Files = require('../../src/Support/Files'); const files = new Files();
 
         return files.extractFileName(this.path);
+    }
+
+    /**
+     * Extracts a date and time from the screenshot file name.
+     * 
+     * As an example, a screenshot named WoWScrnShot_020324_135147.jpg
+     * should return a date and time of 2024-02-03 13:51:47, given that the
+     * format in the filename is month, day, year, hour, minute, second.
+     * 
+     * @returns {string} The extracted date and time in the format "YYYY-MM-DD HH:mm:ss".
+     */
+    parseDate() {
+        const match = /(\d{2})(\d{2})(\d{2})_(\d{2})(\d{2})(\d{2}).*/.exec(this.path);
+
+        const y = parseInt(match[3]); // please, change this if you're alive in 2100+
+        const m = parseInt(match[1]);
+        const d = parseInt(match[2]);
+        const h = parseInt(match[4]);
+        const i = parseInt(match[5]);
+        const s = parseInt(match[6]);
+
+        this.screenshotDate = new Date(2000 + y, m - 1, d, h, i, s);
     }
 }
 

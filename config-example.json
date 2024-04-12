@@ -1,0 +1,14 @@
+{
+    "clients": [
+        {
+            "path": "C:/.../World of Warcraft/_retail_"
+        },
+        {
+            "path": "C:/.../World of Warcraft/_classic_"
+        }
+    ],
+    "settings": {
+        "destinationFolder": "C:/.../Pictures/World of Warcraft Screenshots",
+        "syncMethod": "copy"
+    }
+}

@@ -27,6 +27,14 @@ test('Files.delete() can delete a file', () => {
     expect(files.fs.existsSync(file)).toBe(false);
 });
 
+// @covers Files.extractFileName()
+test('Files.extractFileName() can extract the file name from a full path', () => {
+    const files = new Files();
+
+    expect(files.extractFileName('tests\\Support\\Files.test.js')).toBe('Files.test.js');
+    expect(files.extractFileName('tests/Support/Files.test.js')).toBe('Files.test.js');
+});
+
 // @covers Files.list()
 test('Files.list() can list the contents of a directory', () => {
     const files = new Files();

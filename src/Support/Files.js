@@ -33,6 +33,18 @@ class Files {
     }
 
     /**
+     * Extracts the file name from a full path.
+     * 
+     * @param {string} fullPath 
+     * @returns {string}
+     */
+    extractFileName(fullPath) {
+        const pathSeparator = /[\\/]/;
+        const pathParts = fullPath.split(pathSeparator);
+        return pathParts[pathParts.length - 1];
+    }
+
+    /**
      * Lists the contents of a directory.
      * 
      * This is just a facade for fs.readdirSync().

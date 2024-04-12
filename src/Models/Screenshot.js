@@ -16,6 +16,18 @@ class Screenshot {
     constructor(path) {
         this.path = path;
     }
+
+    /**
+     * Gets the file name of the screenshot, without the path.
+     * 
+     * @returns {string} The file name of the screenshot.
+     */
+    getFilename() {
+        // @TODO: Remove this line when app() is implemented and get its Files instance <2024.04.12>
+        const Files = require('../../src/Support/Files'); const files = new Files();
+
+        return files.extractFileName(this.path);
+    }
 }
 
 module.exports = Screenshot;

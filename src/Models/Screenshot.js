@@ -21,9 +21,14 @@ class Screenshot {
 
     /**
      * Copies the screenshot to a new location.
+     * 
+     * The screenshot destination must include the absolute path and the
+     * filename.
+     * 
+     * @param {string} destination The absolute new path filename.
      */
-    copy() {
-        // @TODO: Implement this method in CM2 <2024.04.15>
+    copy(destination) {
+        this.getFilesInstance().copy(this.path, destination);
     }
 
     /**
@@ -51,9 +56,11 @@ class Screenshot {
      * year and month the screenshot was taken. For example, a screenshot
      * taken on March 1, 2023, will have a destination folder of /2023/03.
      * 
+     * @TODO: Update this method in FE2 <2024.04.15>
+     * 
      * @returns {string} The destination folder of the screenshot.
      */
-    getDestination() {
+    getDestinationFolder() {
         return `${this.getYear()}/${this.getMonth().toString().padStart(2, '0')}`;
     }
 
@@ -63,10 +70,17 @@ class Screenshot {
      * @returns {string} The file name of the screenshot.
      */
     getFilename() {
-        // @TODO: Remove this line when app() is implemented and get its Files instance <2024.04.12>
-        const Files = require('../../src/Support/Files'); const files = new Files();
+        return this.getFilesInstance().extractFileName(this.path);
+    }
 
-        return files.extractFileName(this.path);
+    /**
+     * Support method to get the Files instance.
+     * 
+     * @TODO: Update this method when app() is implemented and get its Files instance <2024.04.12>
+     */
+    getFilesInstance() {
+        const Files = require('../../src/Support/Files');
+        return new Files();
     }
 
     /**
@@ -119,9 +133,16 @@ class Screenshot {
 
     /**
      * Moves the screenshot to a new location.
+     * 
+     * The screenshot destination must include the absolute path and the
+     * filename.
+     * 
+     * @param {string} destination The absolute new path filename.
      */
-    move() {
-        // @TODO: Implement this method in CM2 <2024.04.15>
+    move(destination) {
+        this.getFilesInstance().move(this.path, destination);
+
+        this.path = destination;
     }
 
     /**

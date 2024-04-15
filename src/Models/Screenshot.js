@@ -29,6 +29,15 @@ class Screenshot {
     }
 
     /**
+     * Gets the day of the month the screenshot was taken.
+     * 
+     * @returns {number} The day of the month the screenshot was taken.
+     */
+    getDay() {
+        return this.screenshotDate.getDate();
+    }
+
+    /**
      * Gets the file name of the screenshot, without the path.
      * 
      * @returns {string} The file name of the screenshot.

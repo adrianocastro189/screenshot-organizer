@@ -12,6 +12,13 @@ test('Screenshot class is accessible and can be instantiated', () => {
     expect(screenshot.path).toBe(SAMPLE_SCREENSHOT_JPG_PATH);
 });
 
+// @covers Screenshot.getDate()
+test('Screenshot.getDate() can return the date and time the screenshot was taken', () => {
+    const screenshot = new Screenshot(SAMPLE_SCREENSHOT_JPG_PATH);
+
+    expect(screenshot.getDate()).toEqual(new Date('2023-03-01T15:09:20'));
+});
+
 // @covers Screenshot.getFilename()
 test('Screenshot.getFilename() can extract the file name from the path', () => {
     const screenshot = new Screenshot(SAMPLE_SCREENSHOT_JPG_PATH);

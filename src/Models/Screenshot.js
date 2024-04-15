@@ -20,6 +20,15 @@ class Screenshot {
     }
 
     /**
+     * Gets the date and time the screenshot was taken.
+     * 
+     * @returns {Date} The date and time the screenshot was taken.
+     */
+    getDate() {
+        return this.screenshotDate;
+    }
+
+    /**
      * Gets the file name of the screenshot, without the path.
      * 
      * @returns {string} The file name of the screenshot.

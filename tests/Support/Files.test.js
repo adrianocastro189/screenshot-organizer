@@ -1,6 +1,6 @@
 const Files = require('../../src/Support/Files');
 
-// @covers Files.js
+// @covers Files
 test('Files class is accessible and can be instantiated', () => {
     const files = new Files();
     expect(files).toBeInstanceOf(Files);
@@ -25,6 +25,14 @@ test('Files.delete() can delete a file', () => {
     expect(files.fs.existsSync(file)).toBe(true);
     files.delete(file);
     expect(files.fs.existsSync(file)).toBe(false);
+});
+
+// @covers Files.extractFileName()
+test('Files.extractFileName() can extract the file name from a full path', () => {
+    const files = new Files();
+
+    expect(files.extractFileName('tests\\Support\\Files.test.js')).toBe('Files.test.js');
+    expect(files.extractFileName('tests/Support/Files.test.js')).toBe('Files.test.js');
 });
 
 // @covers Files.list()

@@ -4,7 +4,7 @@
   "description": "An application to organize World of Warcraft screenshots based on their timestamps.",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --verbose"
   },
   "repository": {
     "type": "git",

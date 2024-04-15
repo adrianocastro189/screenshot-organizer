@@ -40,6 +40,13 @@ test('Screenshot.getHour() can return the hour the screenshot was taken', () => 
     expect(screenshot.getHour()).toBe(15);
 });
 
+// @covers Screenshot.getMinute()
+test('Screenshot.getMinute() can return the minute the screenshot was taken', () => {
+    const screenshot = new Screenshot(SAMPLE_SCREENSHOT_JPG_PATH);
+
+    expect(screenshot.getMinute()).toBe(9);
+});
+
 // @covers Screenshot.getMonth()
 test('Screenshot.getMonth() can return the month the screenshot was taken', () => {
     const screenshot = new Screenshot(SAMPLE_SCREENSHOT_JPG_PATH);

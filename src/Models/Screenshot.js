@@ -22,10 +22,10 @@ class Screenshot {
     /**
      * Copies the screenshot to a new location.
      * 
-     * This is the final destination of the screenshot, and it should
-     * include the absolute path and the file name.
+     * The screenshot destination must include the absolute path and the
+     * filename.
      * 
-     * @param {string} destination The path to the destination folder.
+     * @param {string} destination The absolute new path filename.
      */
     copy(destination) {
         this.getFilesInstance().copy(this.path, destination);
@@ -56,9 +56,11 @@ class Screenshot {
      * year and month the screenshot was taken. For example, a screenshot
      * taken on March 1, 2023, will have a destination folder of /2023/03.
      * 
+     * @TODO: Update this method in FE2 <2024.04.15>
+     * 
      * @returns {string} The destination folder of the screenshot.
      */
-    getDestination() {
+    getDestinationFolder() {
         return `${this.getYear()}/${this.getMonth().toString().padStart(2, '0')}`;
     }
 
@@ -131,9 +133,16 @@ class Screenshot {
 
     /**
      * Moves the screenshot to a new location.
+     * 
+     * The screenshot destination must include the absolute path and the
+     * filename.
+     * 
+     * @param {string} destination The absolute new path filename.
      */
-    move() {
-        // @TODO: Implement this method in CM2 <2024.04.15>
+    move(destination) {
+        this.getFilesInstance().move(this.path, destination);
+
+        this.path = destination;
     }
 
     /**

@@ -41,6 +41,18 @@ class Screenshot {
     }
 
     /**
+     * Gets a numeric representation of the month the screenshot was taken.
+     * 
+     * Months in JavaScript are zero-based, so January is 0, February is 1,
+     * etc. However, this method returns the month in the format 1-12.
+     * 
+     * @returns {number} The month the screenshot was taken.
+     */
+    getMonth() {
+        return this.screenshotDate.getMonth() + 1;
+    }
+
+    /**
      * Extracts a date and time from the screenshot file name.
      * 
      * As an example, a screenshot named WoWScrnShot_020324_135147.jpg

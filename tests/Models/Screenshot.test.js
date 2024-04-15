@@ -26,6 +26,13 @@ test('Screenshot.getFilename() can extract the file name from the path', () => {
     expect(screenshot.getFilename()).toBe('WoWScrnShot_030123_150920.jpg');
 });
 
+// @covers Screenshot.getMonth()
+test('Screenshot.getMonth() can return the month the screenshot was taken', () => {
+    const screenshot = new Screenshot(SAMPLE_SCREENSHOT_JPG_PATH);
+
+    expect(screenshot.getMonth()).toBe(3);
+});
+
 // @covers Screenshot.parseDate()
 test('Screenshot.parseDate() can extract the date and time from the file name', () => {
     expect(new Screenshot(SAMPLE_SCREENSHOT_JPG_PATH).screenshotDate).toEqual(new Date('2023-03-01T15:09:20'));

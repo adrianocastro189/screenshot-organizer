@@ -50,6 +50,15 @@ class Screenshot {
     }
 
     /**
+     * Gets the hour the screenshot was taken.
+     * 
+     * @returns {number} The hour the screenshot was taken.
+     */
+    getHour() {
+        return this.screenshotDate.getHours();
+    }
+
+    /**
      * Gets a numeric representation of the month the screenshot was taken.
      * 
      * Months in JavaScript are zero-based, so January is 0, February is 1,

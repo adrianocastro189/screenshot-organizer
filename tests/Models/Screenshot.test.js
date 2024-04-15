@@ -12,6 +12,11 @@ test('Screenshot class is accessible and can be instantiated', () => {
     expect(screenshot.path).toBe(SAMPLE_SCREENSHOT_JPG_PATH);
 });
 
+// @covers Screenshot.copy()
+test('Screenshot.copy() can copy the screenshot to the destination folder', () => {
+    // @TODO: Implement this method in CM2 <2024.04.15>
+});
+
 // @covers Screenshot.getDate()
 test('Screenshot.getDate() can return the date and time the screenshot was taken', () => {
     const screenshot = new Screenshot(SAMPLE_SCREENSHOT_JPG_PATH);
@@ -73,6 +78,16 @@ test('Screenshot.getYear() can return the year the screenshot was taken', () => 
     const screenshot = new Screenshot(SAMPLE_SCREENSHOT_JPG_PATH);
 
     expect(screenshot.getYear()).toBe(2023);
+});
+
+// @covers Screenshot.move()
+test('Screenshot.move() can move the screenshot to the destination folder', () => {
+    // @TODO: Implement this method in CM2 <2024.04.15>
+});
+
+// @covers Screenshot.organize()
+test('Screenshot.organize() can organize the screenshot', () => {
+    // @TODO: Implement this method in FE2 <2024.04.15>
 });
 
 // @covers Screenshot.parseDate()

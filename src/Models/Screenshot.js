@@ -20,6 +20,13 @@ class Screenshot {
     }
 
     /**
+     * Copies the screenshot to a new location.
+     */
+    copy() {
+        // @TODO: Implement this method in CM2 <2024.04.15>
+    }
+
+    /**
      * Gets the date and time the screenshot was taken.
      * 
      * @returns {Date} The date and time the screenshot was taken.
@@ -108,6 +115,23 @@ class Screenshot {
      */
     getYear() {
         return this.screenshotDate.getFullYear();
+    }
+
+    /**
+     * Moves the screenshot to a new location.
+     */
+    move() {
+        // @TODO: Implement this method in CM2 <2024.04.15>
+    }
+
+    /**
+     * Uses what's configured in the app to organize the screenshot.
+     * 
+     * By organizing the screenshot, it means that it will be moved or
+     * copied to a new location.
+     */
+    organize() {
+        // @TODO: Implement this method in FE2 <2024.04.15>
     }
 
     /**

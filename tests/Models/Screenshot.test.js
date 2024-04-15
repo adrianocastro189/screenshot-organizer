@@ -54,6 +54,13 @@ test('Screenshot.getMonth() can return the month the screenshot was taken', () =
     expect(screenshot.getMonth()).toBe(3);
 });
 
+// @covers Screenshot.getSecond()
+test('Screenshot.getSecond() can return the second the screenshot was taken', () => {
+    const screenshot = new Screenshot(SAMPLE_SCREENSHOT_JPG_PATH);
+
+    expect(screenshot.getSecond()).toBe(20);
+});
+
 // @covers Screenshot.getYear()
 test('Screenshot.getYear() can return the year the screenshot was taken', () => {
     const screenshot = new Screenshot(SAMPLE_SCREENSHOT_JPG_PATH);

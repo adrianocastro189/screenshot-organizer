@@ -80,6 +80,15 @@ class Screenshot {
     }
 
     /**
+     * Gets the second the screenshot was taken.
+     * 
+     * @returns {number} The second the screenshot was taken.
+     */
+    getSecond() {
+        return this.screenshotDate.getSeconds();
+    }
+
+    /**
      * Gets the year the screenshot was taken.
      * 
      * @returns {number} The year the screenshot was taken.

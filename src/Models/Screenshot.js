@@ -21,9 +21,14 @@ class Screenshot {
 
     /**
      * Copies the screenshot to a new location.
+     * 
+     * This is the final destination of the screenshot, and it should
+     * include the absolute path and the file name.
+     * 
+     * @param {string} destination The path to the destination folder.
      */
-    copy() {
-        // @TODO: Implement this method in CM2 <2024.04.15>
+    copy(destination) {
+        this.getFilesInstance().copy(this.path, destination);
     }
 
     /**
@@ -63,10 +68,17 @@ class Screenshot {
      * @returns {string} The file name of the screenshot.
      */
     getFilename() {
-        // @TODO: Remove this line when app() is implemented and get its Files instance <2024.04.12>
-        const Files = require('../../src/Support/Files'); const files = new Files();
+        return this.getFilesInstance().extractFileName(this.path);
+    }
 
-        return files.extractFileName(this.path);
+    /**
+     * Support method to get the Files instance.
+     * 
+     * @TODO: Update this method when app() is implemented and get its Files instance <2024.04.12>
+     */
+    getFilesInstance() {
+        const Files = require('../../src/Support/Files');
+        return new Files();
     }
 
     /**

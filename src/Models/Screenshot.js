@@ -38,6 +38,19 @@ class Screenshot {
     }
 
     /**
+     * Gets the destination folder of the screenshot.
+     * 
+     * In this first version, the destination folder is represented by the
+     * year and month the screenshot was taken. For example, a screenshot
+     * taken on March 1, 2023, will have a destination folder of /2023/03.
+     * 
+     * @returns {string} The destination folder of the screenshot.
+     */
+    getDestination() {
+        return `${this.getYear()}/${this.getMonth().toString().padStart(2, '0')}`;
+    }
+
+    /**
      * Gets the file name of the screenshot, without the path.
      * 
      * @returns {string} The file name of the screenshot.

@@ -26,6 +26,13 @@ test('Screenshot.getDay() can return the day of the month the screenshot was tak
     expect(screenshot.getDay()).toBe(1);
 });
 
+// @covers Screenshot.getDestination()
+test('Screenshot.getDestination() can return the destination folder of the screenshot', () => {
+    const screenshot = new Screenshot(SAMPLE_SCREENSHOT_JPG_PATH);
+
+    expect(screenshot.getDestination()).toBe('2023/03');
+});
+
 // @covers Screenshot.getFilename()
 test('Screenshot.getFilename() can extract the file name from the path', () => {
     const screenshot = new Screenshot(SAMPLE_SCREENSHOT_JPG_PATH);

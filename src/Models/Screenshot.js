@@ -62,6 +62,15 @@ class Screenshot {
     }
 
     /**
+     * Gets the year the screenshot was taken.
+     * 
+     * @returns {number} The year the screenshot was taken.
+     */
+    getYear() {
+        return this.screenshotDate.getFullYear();
+    }
+
+    /**
      * Extracts a date and time from the screenshot file name.
      * 
      * As an example, a screenshot named WoWScrnShot_020324_135147.jpg

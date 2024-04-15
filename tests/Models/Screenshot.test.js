@@ -40,6 +40,13 @@ test('Screenshot.getMonth() can return the month the screenshot was taken', () =
     expect(screenshot.getMonth()).toBe(3);
 });
 
+// @covers Screenshot.getYear()
+test('Screenshot.getYear() can return the year the screenshot was taken', () => {
+    const screenshot = new Screenshot(SAMPLE_SCREENSHOT_JPG_PATH);
+
+    expect(screenshot.getYear()).toBe(2023);
+});
+
 // @covers Screenshot.parseDate()
 test('Screenshot.parseDate() can extract the date and time from the file name', () => {
     expect(new Screenshot(SAMPLE_SCREENSHOT_JPG_PATH).screenshotDate).toEqual(new Date('2023-03-01T15:09:20'));

@@ -33,6 +33,16 @@ class Files {
     }
 
     /**
+     * Determines whether a file or folder exists or not.
+     * 
+     * @param {string} path 
+     * @returns {boolean}
+     */
+    exists(path) {
+        return this.fs.existsSync(path);
+    }
+
+    /**
      * Extracts the file name from a full path.
      * 
      * @param {string} fullPath 
@@ -92,7 +102,24 @@ class Files {
      * @returns {string}
      */
     path(path) {
-        return __dirname + '/../' + (path || '');
+        return this.sanitizePath(__dirname + '/../../' + (path || ''));
+    }
+
+    /**
+     * Sanitizes a path to make sure it's in the correct format that this
+     * application expects.
+     * 
+     * @param {string} path 
+     * @returns string
+     */
+    sanitizePath(path) {
+        // replace all backslashes with forward slashes
+        path = path.replace(/\\/g, '/');
+
+        // remove trailing slashes
+        path = path.replace(/\/$/, '');
+
+        return path;
     }
 }
 

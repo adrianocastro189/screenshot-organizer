@@ -27,6 +27,14 @@ test('Files.delete() can delete a file', () => {
     expect(files.fs.existsSync(file)).toBe(false);
 });
 
+// @covers Files.exists()
+test('Files.exists() can determine whether a file or folder exists or not', () => {
+    const files = new Files();
+    expect(files.exists('tests/Support')).toBe(true);
+    expect(files.exists('tests/Support/Files.test.js')).toBe(true);
+    expect(files.exists('tests/Support/Files.test.invalid.js')).toBe(false);
+});
+
 // @covers Files.extractFileName()
 test('Files.extractFileName() can extract the file name from a full path', () => {
     const files = new Files();
@@ -80,4 +88,11 @@ test('Files.move() can move a file from source to destination', () => {
     expect(files.fs.existsSync(destination)).toBe(false);
     expect(files.fs.existsSync(clone)).toBe(true);
     files.fs.unlinkSync(clone);
+});
+
+// @covers Files.sanitizePath()
+test('Files.sanitizePath() can sanitize a path', () => {
+    const files = new Files();
+    const path = 'C:\\Users\\User\\Desktop\\Screenshots\\';
+    expect(files.sanitizePath(path)).toBe('C:/Users/User/Desktop/Screenshots');
 });

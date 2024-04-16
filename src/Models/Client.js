@@ -56,6 +56,15 @@ class Client {
     }
 
     /**
+     * Organizes all the screenshots in the client.
+     */
+    organize() {
+        this.getScreenshots().forEach(screenshot => {
+            screenshot.organize();
+        });
+    }
+
+    /**
      * Determines whether the client is valid or not.
      * 
      * A valid client is a client that has a Screenshots folder inside its

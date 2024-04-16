@@ -27,3 +27,21 @@ test('Client.isValid()', () => {
     expect(invalidClient.isValid()).toBe(false);
 });
 
+test('Client.organize()', () => {
+    const screenshotA = new Screenshot('WoWScrnShot_030123_150920.jpg');
+    const screenshotB = new Screenshot('WoWScrnShot_030123_150920.jpg');
+    const screenshotC = new Screenshot('WoWScrnShot_030123_150920.jpg');
+
+    screenshotA.organize = jest.fn();
+    screenshotB.organize = jest.fn();
+    screenshotC.organize = jest.fn();
+    
+    const client = new Client('');
+    client.getScreenshots = jest.fn().mockReturnValue([screenshotA, screenshotB]);
+
+    client.organize();
+
+    expect(screenshotA.organize).toHaveBeenCalledTimes(1);
+    expect(screenshotB.organize).toHaveBeenCalledTimes(1);
+    expect(screenshotC.organize).toHaveBeenCalledTimes(0);
+});

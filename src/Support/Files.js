@@ -77,7 +77,7 @@ class Files {
     listScreenshots(directory) {
         return this.list(directory).filter(file => {
             return file.endsWith('.jpg') || file.endsWith('.jpeg') || file.endsWith('.tga');
-        });
+        }).map(file => directory + '/' + file);
     }
 
     /**

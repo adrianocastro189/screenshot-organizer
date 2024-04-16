@@ -65,13 +65,13 @@ test('Files.listScreenshots() can list the screenshots in a directory', () => {
     const screenshots = files.listScreenshots(directory);
 
     expect(screenshots).not.toContain('Files.test.js');
-    expect(screenshots).toContain('test-screenshot.jpg');
-    expect(screenshots).toContain('test-screenshot.jpeg');
-    expect(screenshots).toContain('test-screenshot.tga');
+    expect(screenshots).toContain('tests/Support/test-screenshot.jpg');
+    expect(screenshots).toContain('tests/Support/test-screenshot.jpeg');
+    expect(screenshots).toContain('tests/Support/test-screenshot.tga');
 
     // delete the screenshot files
     screenshots.forEach(screenshot => {
-        files.fs.unlinkSync(`tests/Support/${screenshot}`);
+        files.fs.unlinkSync(screenshot);
     });
 });
 

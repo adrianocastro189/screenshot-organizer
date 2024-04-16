@@ -16,7 +16,29 @@ class Client {
      * @param {string} path The path to the client folder.
      */
     constructor(path) {
-        this.path = path;
+        this.path = this.getFilesInstance().sanitizePath(path);
+    }
+
+    /**
+     * Support method to get the Files instance.
+     * 
+     * @TODO: Update this method when app() is implemented and get its Files instance <2024.04.12>
+     */
+    getFilesInstance() {
+        const Files = require('../../src/Support/Files');
+        return new Files();
+    }
+
+    /**
+     * Determines whether the client is valid or not.
+     * 
+     * A valid client is a client that has a Screenshots folder inside its
+     * path.
+     * 
+     * @returns {boolean} True if the client is valid, false otherwise.
+     */
+    isValid() {
+        return this.path !== '' && this.getFilesInstance().exists(`${this.path}/Screenshots`);
     }
 }
 

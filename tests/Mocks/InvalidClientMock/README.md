@@ -1,0 +1,1 @@
+This is just a simple file to have InvalidClientMock as a valid directory.

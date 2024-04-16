@@ -1,3 +1,5 @@
+const Screenshot = require('./Screenshot');
+
 /**
  * Represents a World of Warcraft client.
  * 
@@ -30,6 +32,30 @@ class Client {
     }
 
     /**
+     * Gets all the screenshots in a client.
+     * 
+     * It's important to mention that this method will look for screenshots
+     * in the root of the Screenshots folder. If the screenshots are inside
+     * subfolders, this method won't find them.
+     * 
+     * @returns {Array} An array of Screenshot instances.
+     */
+    getScreenshots() {
+        const screenshots = this.getFilesInstance().listScreenshots(this.getScreenshotsPath());
+        
+        return screenshots.map(screenshot => new Screenshot(screenshot));
+    }
+
+    /**
+     * Just a support method to get the path to the Screenshots folder.
+     * 
+     * @returns {string} The path to the Screenshots folder.
+     */
+    getScreenshotsPath() {
+        return `${this.path}/Screenshots`;
+    }
+
+    /**
      * Determines whether the client is valid or not.
      * 
      * A valid client is a client that has a Screenshots folder inside its
@@ -38,7 +64,7 @@ class Client {
      * @returns {boolean} True if the client is valid, false otherwise.
      */
     isValid() {
-        return this.path !== '' && this.getFilesInstance().exists(`${this.path}/Screenshots`);
+        return this.path !== '' && this.getFilesInstance().exists(this.getScreenshotsPath());
     }
 }
 

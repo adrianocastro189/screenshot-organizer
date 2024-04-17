@@ -25,6 +25,18 @@ class Configuration {
     }
 
     /**
+     * Gets a list of initialized clients.
+     * 
+     * This method expects the class to be fully loaded, otherwise it will
+     * retun an empty array.
+     * 
+     * @returns {Array<Client>}
+     */
+    getClients() {
+        return this.clients;
+    }
+
+    /**
      * Gets the absolute path to the configuration file.
      * 
      * @returns {string} The path to the configuration file.

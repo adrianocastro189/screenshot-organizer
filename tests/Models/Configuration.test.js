@@ -49,6 +49,10 @@ test('Configuration.construct()', () => {
     expect(configuration.clients).toBeInstanceOf(Array);
 });
 
+test('Configuration.getClients()', () => {
+    expect(configuration.getClients()).toBeInstanceOf(Array);
+});
+
 test('Configuration.getConfigurationPath()', () => {
     const configuration = new Configuration();
 

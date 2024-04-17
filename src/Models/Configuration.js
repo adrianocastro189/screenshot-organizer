@@ -6,6 +6,7 @@ class Configuration {
      * Creates a new Configuration instance.
      */
     constructor() {
+        this.clients = [];
     }
 }
 

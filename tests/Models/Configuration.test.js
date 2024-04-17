@@ -4,4 +4,5 @@ const configuration = new Configuration();
 
 test('Client.construct()', () => {
     expect(configuration).toBeInstanceOf(Configuration);
+    expect(configuration.clients).toBeInstanceOf(Array);
 });

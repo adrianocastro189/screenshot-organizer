@@ -1,14 +1,10 @@
+const Client = require('../../src/Models/Client');
 const Configuration = require('../../src/Models/Configuration');
 const Files = require('../../src/Support/Files');
 
 const configuration = new Configuration();
 
-test('Client.construct()', () => {
-    expect(configuration).toBeInstanceOf(Configuration);
-    expect(configuration.clients).toBeInstanceOf(Array);
-});
-
-test("Client.assertConfigurationFileExists() when config.json doesn't exist", () => {
+test("Configuration.assertConfigurationFileExists() when config.json doesn't exist", () => {
     const configuration = new Configuration();
 
     // mocks the Files method to return false
@@ -28,7 +24,7 @@ test("Client.assertConfigurationFileExists() when config.json doesn't exist", ()
     }).toThrow('No config.json found!');
 });
 
-test("Client.assertConfigurationFileExists() when config.json exists", () => {
+test("Configuration.assertConfigurationFileExists() when config.json exists", () => {
     const configuration = new Configuration();
 
     // mocks the Files method to return false
@@ -48,7 +44,12 @@ test("Client.assertConfigurationFileExists() when config.json exists", () => {
     }).not.toThrow();
 });
 
-test('Client.getConfigurationPath()', () => {
+test('Configuration.construct()', () => {
+    expect(configuration).toBeInstanceOf(Configuration);
+    expect(configuration.clients).toBeInstanceOf(Array);
+});
+
+test('Configuration.getConfigurationPath()', () => {
     const configuration = new Configuration();
 
     // mocks the Files method to return a fake app path
@@ -63,7 +64,24 @@ test('Client.getConfigurationPath()', () => {
     expect(configuration.getConfigurationPath()).toBe('/config.json');
 });
 
-test('Client.loadConfiguration()', () => {
+test('Configuration.loadClient() with a valid client', () => {
+    const configuration = new Configuration();
+
+    configuration.loadClient(new Files().path('tests/Mocks/ClientMock'));
+
+    expect(configuration.clients).toHaveLength(1);
+    expect(configuration.clients[0]).toBeInstanceOf(Client);
+});
+
+test('Configuration.loadClient() with an invalid client', () => {
+    const configuration = new Configuration();
+
+    expect(() => {
+        configuration.loadClient('invalid-path');
+    }).toThrow(`Client invalid-path has no screenshots folder.`);
+});
+
+test('Configuration.loadConfiguration()', () => {
     const configuration = new Configuration();
 
     configuration.getConfigurationPath = () => {

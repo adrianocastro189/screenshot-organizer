@@ -7,6 +7,18 @@ const files = new Files();
 const validClient = new Client(files.path('tests/Mocks/ClientMock'));
 const invalidClient = new Client(files.path('tests/Mocks/InvalidClientMock'));
 
+test('Client.assertClientIsValid() when client is valid', () => {
+    expect(() => {
+        validClient.assertClientIsValid();
+    }).not.toThrow();
+});
+
+test('Client.assertClientIsValid() when client is not valid', () => {
+    expect(() => {
+        invalidClient.assertClientIsValid();
+    }).toThrow(`Client ${invalidClient.path} has no screenshots folder.`);
+});
+
 test('Client.construct()', () => {
     expect(validClient).toBeInstanceOf(Client);
     expect(validClient.path).toBe(files.path('tests/Mocks/ClientMock'));

@@ -1,3 +1,5 @@
+const Client = require('./Client');
+
 /**
  * Wraps the configuration that the application uses to run.
  */
@@ -39,6 +41,22 @@ class Configuration {
     getFilesInstance() {
         const Files = require('../../src/Support/Files');
         return new Files();
+    }
+
+    /**
+     * Loads a client represented by a path.
+     * 
+     * The client path should be a valid path to a client folder, otherwise
+     * an error will be thrown.
+     * 
+     * @param {string} clientPath 
+     */
+    loadClient(clientPath) {
+        const client = new Client(clientPath);
+
+        client.assertClientIsValid();
+
+        this.clients.push(client);
     }
 
     /**

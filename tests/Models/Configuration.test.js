@@ -90,6 +90,21 @@ test('Configuration.getSyncMethod()', () => {
     expect(configuration.getSyncMethod()).toBe('move');
 });
 
+test('Configuration.load()', () => {
+    const configuration = new Configuration();
+
+    // mocks the load methods
+    configuration.loadConfiguration = jest.fn();
+    configuration.loadDestinationFolder = jest.fn();
+    configuration.loadClients = jest.fn();
+
+    configuration.load();
+
+    expect(configuration.loadConfiguration).toHaveBeenCalledTimes(1);
+    expect(configuration.loadDestinationFolder).toHaveBeenCalledTimes(1);
+    expect(configuration.loadClients).toHaveBeenCalledTimes(1);
+});
+
 test('Configuration.loadClient()', () => {
     const configuration = new Configuration();
 

@@ -79,6 +79,15 @@ class Configuration {
     }
 
     /**
+     * Loads all the configuration properties required to run the application.
+     */
+    load() {
+        this.loadConfiguration();
+        this.loadClients();
+        this.loadDestinationFolder();
+    }
+
+    /**
      * Loads a client represented by a path.
      * 
      * The client path should be a valid path to a client folder, otherwise

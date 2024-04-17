@@ -64,6 +64,18 @@ test('Configuration.getConfigurationPath()', () => {
     expect(configuration.getConfigurationPath()).toBe('/config.json');
 });
 
+test('Configuration.getSyncMethod()', () => {
+    const configuration = new Configuration();
+
+    expect(configuration.getSyncMethod()).toBe('copy');
+
+    configuration.properties = {
+        syncMethod: 'move',
+    };
+
+    expect(configuration.getSyncMethod()).toBe('move');
+});
+
 test('Configuration.loadClient()', () => {
     const configuration = new Configuration();
 

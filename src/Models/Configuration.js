@@ -44,6 +44,17 @@ class Configuration {
     }
 
     /**
+     * Gets the sync method set in the configuration file.
+     * 
+     * By default, the sync method is set to 'copy'.
+     * 
+     * @returns {string}
+     */
+    getSyncMethod() {
+        return this.properties?.syncMethod || 'copy';
+    }
+
+    /**
      * Loads a client represented by a path.
      * 
      * The client path should be a valid path to a client folder, otherwise

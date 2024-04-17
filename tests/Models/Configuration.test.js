@@ -68,6 +68,16 @@ test('Configuration.getConfigurationPath()', () => {
     expect(configuration.getConfigurationPath()).toBe('/config.json');
 });
 
+test('Configuration.getDestinationFolder()', () => {
+    const configuration = new Configuration();
+
+    expect(configuration.getDestinationFolder()).toBe(undefined);
+
+    configuration.destinationFolder = 'test-folder';
+
+    expect(configuration.getDestinationFolder()).toBe('test-folder');
+});
+
 test('Configuration.getSyncMethod()', () => {
     const configuration = new Configuration();
 

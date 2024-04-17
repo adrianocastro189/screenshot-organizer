@@ -82,7 +82,7 @@ test('Files.maybeCreateDirectory() can create a directory if it does not exist',
     expect(files.fs.existsSync(directory)).toBe(false);
     files.maybeCreateDirectory(directory);
     expect(files.fs.existsSync(directory)).toBe(true);
-    files.fs.rmdirSync(files.path('tests/Mocks/MockFolder'), { recursive: true });
+    files.fs.rmSync(files.path('tests/Mocks/MockFolder'), { recursive: true });
 });
 
 // @covers Files.move()

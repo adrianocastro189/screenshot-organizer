@@ -28,7 +28,7 @@ class Configuration {
      * Gets a list of initialized clients.
      * 
      * This method expects the class to be fully loaded, otherwise it will
-     * retun an empty array.
+     * return an empty array.
      * 
      * @returns {Array<Client>}
      */
@@ -43,6 +43,18 @@ class Configuration {
      */
     getConfigurationPath() {
         return this.getFilesInstance().path('config.json');
+    }
+
+    /**
+     * Gets the destination folder set in the configuration file.
+     * 
+     * This method expects the class to be fully loaded, otherwise it will
+     * return null.
+     * 
+     * @returns {string} The destination folder.
+     */
+    getDestinationFolder() {
+        return this.destinationFolder;
     }
 
     /**

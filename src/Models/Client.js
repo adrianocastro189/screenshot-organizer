@@ -22,6 +22,17 @@ class Client {
     }
 
     /**
+     * Asserts that the client is valid.
+     * 
+     * If the client is not valid, an error is thrown.
+     */
+    assertClientIsValid() {
+        if (! this.isValid()) {
+            throw new Error(`Client ${this.path} has no screenshots folder.`);
+        }
+    }
+
+    /**
      * Support method to get the Files instance.
      * 
      * @TODO: Update this method when app() is implemented and get its Files instance <2024.04.12>

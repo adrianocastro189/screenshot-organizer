@@ -81,6 +81,19 @@ class Files {
     }
 
     /**
+     * Recursively creates a directory if it doesn't exist.
+     * 
+     * It will create all the directories in the path if they don't exist.
+     * 
+     * @param {string} directory 
+     */
+    maybeCreateDirectory(directory) {
+        if (!this.exists(directory)) {
+            this.fs.mkdirSync(directory, { recursive: true });
+        }
+    }
+
+    /**
      * Moves a file from source to destination.
      * 
      * This is just a facade for fs.renameSync().

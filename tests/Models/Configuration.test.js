@@ -64,7 +64,7 @@ test('Configuration.getConfigurationPath()', () => {
     expect(configuration.getConfigurationPath()).toBe('/config.json');
 });
 
-test('Configuration.loadClient() with a valid client', () => {
+test('Configuration.loadClient()', () => {
     const configuration = new Configuration();
 
     configuration.loadClient(new Files().path('tests/Mocks/ClientMock'));
@@ -79,6 +79,41 @@ test('Configuration.loadClient() with an invalid client', () => {
     expect(() => {
         configuration.loadClient('invalid-path');
     }).toThrow(`Client invalid-path has no screenshots folder.`);
+});
+
+test('Configuration.loadClients()', () => {
+    const configuration = new Configuration();
+
+    configuration.properties = {
+        "clients": [
+            {
+                "path": "C:/Program Files (x86)/World of Warcraft/_classic_"
+            },
+            {
+                "path": "C:/Program Files (x86)/World of Warcraft/_retail_"
+            }
+        ],
+    };
+
+    configuration.loadClient = jest.fn();
+
+    configuration.loadClients();
+
+    expect(configuration.loadClient).toHaveBeenCalledTimes(2);
+    expect(configuration.loadClient).toHaveBeenNthCalledWith(1, 'C:/Program Files (x86)/World of Warcraft/_classic_');
+    expect(configuration.loadClient).toHaveBeenNthCalledWith(2, 'C:/Program Files (x86)/World of Warcraft/_retail_');
+});
+
+test('Configuration.loadClients() with no clients set', () => {
+    const configuration = new Configuration();
+
+    configuration.properties = {
+        'clients' : [],
+    };
+
+    expect(() => {
+        configuration.loadClients();
+    }).toThrow('No clients found in the configuration file.');
 });
 
 test('Configuration.loadConfiguration()', () => {

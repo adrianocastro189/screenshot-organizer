@@ -50,6 +50,8 @@ class Configuration {
      * an error will be thrown.
      * 
      * @param {string} clientPath 
+     * 
+     * @returns {Configuration} The current instance.
      */
     loadClient(clientPath) {
         const client = new Client(clientPath);
@@ -57,6 +59,23 @@ class Configuration {
         client.assertClientIsValid();
 
         this.clients.push(client);
+        
+        return this;
+    }
+
+    /**
+     * Loads all the clients set in the configuration file.
+     * 
+     * @returns {Configuration} The current instance.
+     */
+    loadClients() {
+        if (! this.properties.clients || this.properties.clients.length === 0) {
+            throw new Error('No clients found in the configuration file.');
+        }
+
+        this.properties.clients.forEach(client => this.loadClient(client.path));
+
+        return this;
     }
 
     /**

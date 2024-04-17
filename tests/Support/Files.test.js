@@ -75,6 +75,16 @@ test('Files.listScreenshots() can list the screenshots in a directory', () => {
     });
 });
 
+// @covers Files.maybeCreateDirectory()
+test('Files.maybeCreateDirectory() can create a directory if it does not exist', () => {
+    const files = new Files();
+    const directory = files.path('tests/Mocks/MockFolder/MockNestedFolder/LastFolder');
+    expect(files.fs.existsSync(directory)).toBe(false);
+    files.maybeCreateDirectory(directory);
+    expect(files.fs.existsSync(directory)).toBe(true);
+    files.fs.rmdirSync(files.path('tests/Mocks/MockFolder'), { recursive: true });
+});
+
 // @covers Files.move()
 test('Files.move() can move a file from source to destination', () => {
     const files = new Files();

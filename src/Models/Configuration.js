@@ -79,6 +79,18 @@ class Configuration {
     }
 
     /**
+     * Loads the destination folder set in the configuration file.
+     * 
+     * By loading the destination folder, the application will create the
+     * folder if it doesn't exist and then store it 
+     */
+    loadDestinationFolder() {
+        this.destinationFolder = this.properties.destinationFolder;
+
+        this.getFilesInstance().maybeCreateDirectory(this.destinationFolder);
+    }
+
+    /**
      * Loads the config.json file and sets the configuration properties.
      * 
      * The config.json file should be in the root of the project and can be

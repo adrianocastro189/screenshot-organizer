@@ -140,3 +140,24 @@ test('Configuration.loadConfiguration()', () => {
         }
     });
 });
+
+test('Configuration.loadDestinationFolder()', () => {
+    const configuration = new Configuration();
+
+    configuration.properties = {
+        "destinationFolder": "test-folder"
+    };
+
+    const filesMock = {
+        maybeCreateDirectory: jest.fn(),
+    };
+
+    configuration.getFilesInstance = () => {
+        return filesMock;
+    };
+
+    configuration.loadDestinationFolder();
+
+    expect(configuration.destinationFolder).toBe('test-folder');
+    expect(configuration.getFilesInstance().maybeCreateDirectory).toHaveBeenCalledTimes(1);
+});

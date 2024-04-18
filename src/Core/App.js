@@ -1,3 +1,6 @@
+const Configuration = require('../Models/Configuration');
+const Files = require('../Support/Files');
+
 /**
  * This the class that orchestrates the application.
  * 
@@ -10,6 +13,15 @@ class App {
      * Creates the app instance.
      */
     constructor() {
+        this.configuration = new Configuration();
+
+        // stores the files singleton instance
+        this.files = new Files();
+    }
+
+    load() {
+        // load the app configuration
+        this.configuration.load();
     }
 }
 

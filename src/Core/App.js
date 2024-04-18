@@ -19,9 +19,21 @@ class App {
         this.files = new Files();
     }
 
+    /**
+     * Loads the app dependencies.
+     */
     load() {
         // load the app configuration
         this.configuration.load();
+    }
+
+    /**
+     * Calls the organize method of all clients.
+     */
+    organize() {
+        this.configuration.clients.forEach(client => {
+            client.organize();
+        });
     }
 }
 

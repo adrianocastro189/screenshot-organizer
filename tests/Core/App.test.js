@@ -23,3 +23,16 @@ test('App.load()', () => {
 
     expect(app().configuration.load).toHaveBeenCalled();
 });
+
+test('App.organize()', () => {
+    const clientMockA = { organize: jest.fn() };
+    const clientMockB = { organize: jest.fn() };
+
+    const configurationMock = { clients: [clientMockA, clientMockB] };
+
+    app().configuration = configurationMock;
+    app().organize();
+
+    expect(clientMockA.organize).toHaveBeenCalled();
+    expect(clientMockB.organize).toHaveBeenCalled();
+});

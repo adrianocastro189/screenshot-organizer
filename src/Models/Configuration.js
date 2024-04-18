@@ -75,7 +75,7 @@ class Configuration {
      * @returns {string}
      */
     getSyncMethod() {
-        return this.properties?.syncMethod || 'copy';
+        return this.properties?.settings?.syncMethod || 'copy';
     }
 
     /**
@@ -129,7 +129,7 @@ class Configuration {
      * folder if it doesn't exist and then store it 
      */
     loadDestinationFolder() {
-        this.destinationFolder = this.properties.destinationFolder;
+        this.destinationFolder = this.properties.settings.destinationFolder;
 
         this.getFilesInstance().maybeCreateDirectory(this.destinationFolder);
     }

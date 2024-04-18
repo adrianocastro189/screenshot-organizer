@@ -58,6 +58,20 @@ with your settings. To do that, follow these steps:
 1. Feel free to leave the `syncMethod` with its default value, but if you
    want your screenshots to be moved instead of copied, change it to `move`
 
+### Running the application
+
+Once the requirements are met and the configuration is set, you can run the
+application by:
+
+1. Open a terminal and navigate to the folder where Screenshot Organizer is
+installed
+1. Run `node index`
+
+**Note:** The first version of this application won't print any log messages
+to the terminal, so you won't see any output while it's running. You can
+check the destination folder to see if the screenshots are being organized.
+**Informative output messages are already on the roadmap for future versions.**
+
 ## What's on the roadmap for the next versions
 
 The best way to know what should be done next is to have feedback from 
@@ -83,3 +97,12 @@ tests, use the following command:
 ```bash
 npm test
 ```
+
+## Changelog
+
+2024.04.18 - v1.0.0
+
+* First version of the organizer
+* Organizes screenshots based on their timestamps
+* Copies or moves screenshots to a destination folder
+* Add minimal configuration options

@@ -84,7 +84,9 @@ test('Configuration.getSyncMethod()', () => {
     expect(configuration.getSyncMethod()).toBe('copy');
 
     configuration.properties = {
-        syncMethod: 'move',
+        settings: {
+            syncMethod: 'move',
+        },
     };
 
     expect(configuration.getSyncMethod()).toBe('move');
@@ -186,7 +188,9 @@ test('Configuration.loadDestinationFolder()', () => {
     const configuration = new Configuration();
 
     configuration.properties = {
-        "destinationFolder": "test-folder"
+        "settings": {
+            "destinationFolder": "test-folder"
+        }
     };
 
     const filesMock = {

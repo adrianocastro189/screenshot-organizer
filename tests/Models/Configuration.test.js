@@ -84,7 +84,9 @@ test('Configuration.getSyncMethod()', () => {
     expect(configuration.getSyncMethod()).toBe('copy');
 
     configuration.properties = {
-        syncMethod: 'move',
+        settings: {
+            syncMethod: 'move',
+        },
     };
 
     expect(configuration.getSyncMethod()).toBe('move');

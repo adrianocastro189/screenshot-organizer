@@ -75,7 +75,7 @@ class Configuration {
      * @returns {string}
      */
     getSyncMethod() {
-        return this.properties?.syncMethod || 'copy';
+        return this.properties?.settings?.syncMethod || 'copy';
     }
 
     /**

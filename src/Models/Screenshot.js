@@ -32,6 +32,17 @@ class Screenshot {
     }
 
     /**
+     * Support method to get the App instance.
+     * 
+     * @TODO: Update this method when requires are better structured <2024.04.18>
+     */
+    getAppInstance() {
+        require('../Core/App');
+
+        return app();
+    }
+    
+    /**
      * Gets the date and time the screenshot was taken.
      * 
      * @returns {Date} The date and time the screenshot was taken.
@@ -50,6 +61,15 @@ class Screenshot {
     }
 
     /**
+     * Gets the destination of the screenshot.
+     * 
+     * @returns {string} The destination of the screenshot.
+     */
+    getDestination() {
+        return `${this.getDestinationFolder()}/${this.getFilename()}`;
+    }
+
+    /**
      * Gets the destination folder of the screenshot.
      * 
      * In this first version, the destination folder is represented by the
@@ -61,7 +81,9 @@ class Screenshot {
      * @returns {string} The destination folder of the screenshot.
      */
     getDestinationFolder() {
-        return `${this.getYear()}/${this.getMonth().toString().padStart(2, '0')}`;
+        const baseDestinationFolder = this.getAppInstance().configuration.getDestinationFolder();
+
+        return `${baseDestinationFolder}/${this.getYear()}/${this.getMonth().toString().padStart(2, '0')}`;
     }
 
     /**
@@ -152,7 +174,9 @@ class Screenshot {
      * copied to a new location.
      */
     organize() {
-        // @TODO: Implement this method in FE2 <2024.04.15>
+        const syncMethod = this.getAppInstance().configuration.getSyncMethod();
+
+        syncMethod === 'copy' ? this.copy(this.getDestination()) : this.move(this.getDestination());
     }
 
     /**

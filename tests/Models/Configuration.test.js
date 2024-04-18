@@ -186,7 +186,9 @@ test('Configuration.loadDestinationFolder()', () => {
     const configuration = new Configuration();
 
     configuration.properties = {
-        "destinationFolder": "test-folder"
+        "settings": {
+            "destinationFolder": "test-folder"
+        }
     };
 
     const filesMock = {

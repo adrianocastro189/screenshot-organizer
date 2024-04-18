@@ -30,7 +30,15 @@ test('Screenshot.getDate()', () => expect(screenshot.getDate()).toEqual(new Date
 
 test('Screenshot.getDay()', () => expect(screenshot.getDay()).toBe(1));
 
-test('Screenshot.getDestinationFolder()', () => expect(screenshot.getDestinationFolder()).toBe('2023/03'));
+test('Screenshot.getDestinationFolder()', () => {
+    screenshot.getAppInstance = () => ({
+        configuration: {
+            getDestinationFolder: () => 'test-destination',
+        },
+    });
+
+    expect(screenshot.getDestinationFolder()).toBe('test-destination/2023/03')
+});
 
 test('Screenshot.getFilename()', () => expect(screenshot.getFilename()).toBe('WoWScrnShot_030123_150920.jpg'));
 

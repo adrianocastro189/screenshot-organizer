@@ -32,6 +32,17 @@ class Screenshot {
     }
 
     /**
+     * Support method to get the App instance.
+     * 
+     * @TODO: Update this method when requires are better structured <2024.04.18>
+     */
+    getAppInstance() {
+        require('../Core/App');
+
+        return app();
+    }
+    
+    /**
      * Gets the date and time the screenshot was taken.
      * 
      * @returns {Date} The date and time the screenshot was taken.
@@ -61,7 +72,9 @@ class Screenshot {
      * @returns {string} The destination folder of the screenshot.
      */
     getDestinationFolder() {
-        return `${this.getYear()}/${this.getMonth().toString().padStart(2, '0')}`;
+        const baseDestinationFolder = this.getAppInstance().configuration.getDestinationFolder();
+
+        return `${baseDestinationFolder}/${this.getYear()}/${this.getMonth().toString().padStart(2, '0')}`;
     }
 
     /**

@@ -1,7 +1,9 @@
-const App = require('../../src/Core/App');
+require('../../src/Core/App');
 
-const app = new App();
+test('App.construct() and single instance', () => {
+    expect(app()).not.toBeNull();
 
-test('App.construct()', () => {
-    expect(app).toBeInstanceOf(App);
+    app().testProperty = 'test';
+
+    expect(app().testProperty).toBe('test');
 });

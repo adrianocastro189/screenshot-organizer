@@ -13,4 +13,10 @@ class App {
     }
 }
 
-module.exports = App;
+global.app = () => {
+    // instantiates the app instance if it doesn't exist
+    global.appInstance = global.appInstance || new App();
+
+    // returns the single app instance
+    return global.appInstance;
+};

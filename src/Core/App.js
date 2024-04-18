@@ -35,6 +35,15 @@ class App {
             client.organize();
         });
     }
+
+    /**
+     * Just a facade to the console.log method.
+     * 
+     * @param {*} value 
+     */
+    out(value) {
+        console.log(value);
+    }
 }
 
 global.app = () => {

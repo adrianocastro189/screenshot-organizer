@@ -61,6 +61,15 @@ class Screenshot {
     }
 
     /**
+     * Gets the destination of the screenshot.
+     * 
+     * @returns {string} The destination of the screenshot.
+     */
+    getDestination() {
+        return `${this.getDestinationFolder()}/${this.getFilename()}`;
+    }
+
+    /**
      * Gets the destination folder of the screenshot.
      * 
      * In this first version, the destination folder is represented by the
@@ -165,7 +174,9 @@ class Screenshot {
      * copied to a new location.
      */
     organize() {
-        // @TODO: Implement this method in FE2 <2024.04.15>
+        const syncMethod = this.getAppInstance().configuration.getSyncMethod();
+
+        syncMethod === 'copy' ? this.copy(this.getDestination()) : this.move(this.getDestination());
     }
 
     /**

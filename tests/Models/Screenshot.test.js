@@ -30,6 +30,14 @@ test('Screenshot.getDate()', () => expect(screenshot.getDate()).toEqual(new Date
 
 test('Screenshot.getDay()', () => expect(screenshot.getDay()).toBe(1));
 
+test('Screenshot.getDestination()', () => { 
+    const screenshot = new Screenshot(SAMPLE_SCREENSHOT_JPG_PATH);
+
+    screenshot.getDestinationFolder = () => 'test-destination/2023/03';
+
+    expect(screenshot.getDestination()).toBe('test-destination/2023/03/WoWScrnShot_030123_150920.jpg')
+});
+
 test('Screenshot.getDestinationFolder()', () => {
     screenshot.getAppInstance = () => ({
         configuration: {
@@ -71,8 +79,44 @@ test('Screenshot.move()', () => {
     expect(screenshot.path).toBe('test-destination');
 });
 
-test('Screenshot.organize()', () => {
-    // @TODO: Implement this method in FE2 <2024.04.15>
+test('Screenshot.organize() with copy', () => {
+    const screenshot = new Screenshot(SAMPLE_SCREENSHOT_JPG_PATH);
+
+    // mocks the Files instance
+    const files = new Files();
+    files.copy = jest.fn();
+    
+    screenshot.getAppInstance = () => ({
+        configuration: {
+            getDestinationFolder: () => 'test-destination',
+            getSyncMethod: () => 'copy',
+        },
+    });
+    screenshot.getFilesInstance = () => files;
+    screenshot.organize();
+
+    expect(files.copy).toHaveBeenCalledTimes(1);
+    expect(files.copy).toHaveBeenCalledWith(SAMPLE_SCREENSHOT_JPG_PATH, 'test-destination/2023/03/WoWScrnShot_030123_150920.jpg');
+});
+
+test('Screenshot.organize() with move', () => {
+    const screenshot = new Screenshot(SAMPLE_SCREENSHOT_JPG_PATH);
+
+    // mocks the Files instance
+    const files = new Files();
+    files.move = jest.fn();
+    
+    screenshot.getAppInstance = () => ({
+        configuration: {
+            getDestinationFolder: () => 'test-destination',
+            getSyncMethod: () => 'move',
+        },
+    });
+    screenshot.getFilesInstance = () => files;
+    screenshot.organize();
+
+    expect(files.move).toHaveBeenCalledTimes(1);
+    expect(files.move).toHaveBeenCalledWith(SAMPLE_SCREENSHOT_JPG_PATH, 'test-destination/2023/03/WoWScrnShot_030123_150920.jpg');
 });
 
 test('Screenshot.parseDate()', () => {

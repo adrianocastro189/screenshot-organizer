@@ -70,7 +70,7 @@ installed
 **Note:** The first version of this application won't print any log messages
 to the terminal, so you won't see any output while it's running. You can
 check the destination folder to see if the screenshots are being organized.
-**This is already on the roadmap for future versions.**
+**Informative output messages are already on the roadmap for future versions.**
 
 ## What's on the roadmap for the next versions
 

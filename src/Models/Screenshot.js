@@ -176,6 +176,8 @@ class Screenshot {
     organize() {
         const syncMethod = this.getAppInstance().configuration.getSyncMethod();
 
+        this.getFilesInstance().maybeCreateDirectory(this.getDestinationFolder());
+
         syncMethod === 'copy' ? this.copy(this.getDestination()) : this.move(this.getDestination());
     }
 

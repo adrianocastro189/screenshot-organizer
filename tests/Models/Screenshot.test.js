@@ -85,6 +85,7 @@ test('Screenshot.organize() with copy', () => {
     // mocks the Files instance
     const files = new Files();
     files.copy = jest.fn();
+    files.maybeCreateDirectory = jest.fn();
     
     screenshot.getAppInstance = () => ({
         configuration: {
@@ -95,6 +96,7 @@ test('Screenshot.organize() with copy', () => {
     screenshot.getFilesInstance = () => files;
     screenshot.organize();
 
+    expect(files.maybeCreateDirectory).toHaveBeenCalledTimes(1);
     expect(files.copy).toHaveBeenCalledTimes(1);
     expect(files.copy).toHaveBeenCalledWith(SAMPLE_SCREENSHOT_JPG_PATH, 'test-destination/2023/03/WoWScrnShot_030123_150920.jpg');
 });
@@ -105,6 +107,7 @@ test('Screenshot.organize() with move', () => {
     // mocks the Files instance
     const files = new Files();
     files.move = jest.fn();
+    files.maybeCreateDirectory = jest.fn();
     
     screenshot.getAppInstance = () => ({
         configuration: {
@@ -115,6 +118,7 @@ test('Screenshot.organize() with move', () => {
     screenshot.getFilesInstance = () => files;
     screenshot.organize();
 
+    expect(files.maybeCreateDirectory).toHaveBeenCalledTimes(1);
     expect(files.move).toHaveBeenCalledTimes(1);
     expect(files.move).toHaveBeenCalledWith(SAMPLE_SCREENSHOT_JPG_PATH, 'test-destination/2023/03/WoWScrnShot_030123_150920.jpg');
 });
